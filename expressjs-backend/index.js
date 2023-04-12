@@ -41,6 +41,10 @@ function findUserById(id) {
     return users['users_list'].find( (user) => user['id'] === id);
 }
 
+function addUser(user){
+    users['users_list'].push(user);
+}
+
 app.use(express.json());
 
 app.get('/users', (req, res) => {
@@ -64,6 +68,12 @@ app.get('/users/:id', (req, res) => {
         result = {users_list: result};
         res.send(result);
     }
+});
+
+app.post('/users', (req, res) => {
+    const userToAdd = req.body;
+    addUser(userToAdd);
+    res.status(200).end();
 });
 
 app.listen(port, () => {

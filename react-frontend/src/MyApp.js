@@ -8,7 +8,7 @@ function MyApp() {
 
   function removeOneCharacter (index) {
     makeDeleteCall(characters[index].id).then(result => {
-      if(result && result.status === 202){
+      if(result && result.status === 204){
         const updated = characters.filter((character, i) => {
           return i !== index
         });

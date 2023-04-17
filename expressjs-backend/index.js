@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 8000;
 const cors = require('cors');
+const { v4: uuidv4 } = require('uuid');
 
 const users = { 
     users_list :
@@ -89,7 +90,7 @@ app.get('/users/:id', (req, res) => {
 app.post('/users', (req, res) => {
     const userToAdd = req.body;
     addUser(userToAdd);
-    userToAdd.id = "mik722"
+    userToAdd.id = uuidv4();
     res.send(userToAdd);
     res.status(201).end();
 });
